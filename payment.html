@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .header {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .total {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .payment-button {
+            background-color: #28a745;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .payment-button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header">
+        <h1>Payment Page</h1>
+    </div>
+
+    <!-- Payment Section -->
+    <div class="container">
+        <h3>Total Cost:</h3>
+        <div class="total" id="total-cost-display">$0.00</div>
+
+        <button class="payment-button" onclick="processPayment()">Proceed with Payment</button>
+    </div>
+
+    <script>
+        // Get the total cost from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const totalCost = parseFloat(urlParams.get('totalCost'));
+
+        // Display the total cost
+        document.getElementById('total-cost-display').textContent = `$${totalCost.toFixed(2)}`;
+
+        function processPayment() {
+            alert(`Payment of $${totalCost.toFixed(2)} has been processed successfully.`);
+            // Redirect to a confirmation page or thank you page after payment
+        }
+    </script>
+
+</body>
+</html>

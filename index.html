@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Sunglasses Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+        }
+
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        nav a:hover {
+            background-color: #575757;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
+            padding: 20px;
+        }
+
+        .product {
+            background: #fff;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 5px;
+            width: 250px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .product h3 {
+            margin: 10px 0;
+        }
+
+        .product p {
+            color: #555;
+        }
+
+        .btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background-color: #218838;
+        }
+
+        #cart {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            height: 300px;
+            overflow-y: auto;
+        }
+
+        #cart h2 {
+            text-align: center;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+
+        #total {
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .product {
+                width: 80%;
+                margin: 10px 0;
+            }
+
+            #cart {
+                width: 80%;
+                height: auto;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav>
+    <a href="index.html">Home</a>
+    <a href="productslist.html">Products</a>
+    <a href="cart.html">Cart</a>
+    <a href="about.html">About</a>
+</nav>
+
+<!-- Homepage Content -->
+<div id="home" style="text-align: center; padding-top: 50px;">
+    <h1>Welcome to the Sunglasses Store</h1>
+    <p>Your one-stop shop for stylish sunglasses!</p>
+    <p>Click on the "Products" tab to explore our collection.</p>
+</div>
+
+<!-- Products Page (Products List) -->
+<div id="products" style="display:none;">
+    <h1 style="text-align: center; margin-top: 30px;">Our Sunglasses Collection</h1>
+    <div class="container">
+        <!-- Product 1: Cool Shades -->
+        <div class="product" data-name="Sunglasses - Cool Shades" data-price="3000">
+            <img src="https://via.placeholder.com/200x200?text=Sunglasses1" alt="Cool Sunglasses">
+            <h3>Sunglasses - Cool Shades</h3>
+            <p>Price: ₹3000</p>
+            <p>Stylish sunglasses for the summer. UV protected lenses for maximum comfort.</p>
+            <button class="btn" onclick="addToCart('Sunglasses - Cool Shades', 3000, 'https://via.placeholder.com/200x200?text=Sunglasses1')">Add to Cart</button>
+        </div>
+
+        <!-- Product 2: Aviator Shades -->
+        <div class="product" data-name="Sunglasses - Aviators" data-price="3500">
+            <img src="https://via.placeholder.com/200x200?text=AviatorSunglasses" alt="Aviator Sunglasses">
+            <h3>Sunglasses - Aviators</h3>
+            <p>Price: ₹3500</p>
+            <p>Classic aviators, the perfect accessory for any fashion-forward individual.</p>
+            <button class="btn" onclick="addToCart('Sunglasses - Aviators', 3500, 'https://via.placeholder.com/200x200?text=AviatorSunglasses')">Add to Cart</button>
+        </div>
+
+        <!-- Product 3: Round Shades -->
+        <div class="product" data-name="Sunglasses - Round Shades" data-price="2800">
+            <img src="https://via.placeholder.com/200x200?text=RoundSunglasses" alt="Round Sunglasses">
+            <h3>Sunglasses - Round Shades</h3>
+            <p>Price: ₹2800</p>
+            <p>Retro round sunglasses to complete your vintage look.</p>
+            <button class="btn" onclick="addToCart('Sunglasses - Round Shades', 2800, 'https://via.placeholder.com/200x200?text=RoundSunglasses')">Add to Cart</button>
+        </div>
+    </div>
+</div>
+
+<!-- Cart Section -->
+<div id="cart-page" style="display:none;">
+    <h1 style="text-align: center; margin-top: 30px;">Shopping Cart</h1>
+    <div id="cart-items" style="text-align: center;"></div>
+    <div id="total" style="text-align: center;"></div>
+</div>
+
+<!-- About Section -->
+<div id="about" style="display:none; text-align: center; padding-top: 50px;">
+    <h1>About Us</h1>
+    <p>We are a sunglasses store offering a variety of trendy and fashionable sunglasses at affordable prices. Our sunglasses are made from high-quality materials to provide you with UV protection and style.</p>
+</div>
+
+<script>
+    // Initially, load the homepage
+    document.getElementById("home").style.display = "block";
+
+    // Function to navigate to Products Page
+    function showProducts() {
+        document.getElementById("home").style.display = "none";
+        document.getElementById("products").style.display = "block";
+        document.getElementById("cart-page").style.display = "none";
+        document.getElementById("about").style.display = "none";
+    }
+
+    // Function to navigate to Cart Page
+    function showCart() {
+        document.getElementById("home").style.display = "none";
+        document.getElementById("products").style.display = "none";
+        document.getElementById("cart-page").style.display = "block";
+        document.getElementById("about").style.display = "none";
+        displayCart();
+    }
+
+    // Function to navigate to About Page
+    function showAbout() {
+        document.getElementById("home").style.display = "none";
+        document.getElementById("products").style.display = "none";
+        document.getElementById("cart-page").style.display = "none";
+        document.getElementById("about").style.display = "block";
+    }
+
+    // Cart functionality (storing items in the cart)
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function addToCart(productName, productPrice, productImage) {
+        const cartItem = {
+            name: productName,
+            price: productPrice,
+            image: productImage
+        };
+
+        cart.push(cartItem);
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    function removeFromCart(index) {
+        cart.splice(index, 1);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        displayCart();
+    }
+
+    function displayCart() {
+        const cartItemsContainer = document.getElementById('cart-items');
+        const totalContainer = document.getElementById('total');
+
+        cartItemsContainer.innerHTML = '';
+        let total = 0;
+
+        if (cart.length === 0) {
+            cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+            totalContainer.innerHTML = '';
+            return;
+        }
+
+        cart.forEach((item, index) => {
+            const cartItemDiv = document.createElement('div');
+            cartItemDiv.classList.add('cart-item');
+            cartItemDiv.innerHTML = `
+                <img src="${item.image}" alt="${item.name}" style="width: 40px; height: 40px; object-fit: cover; margin-right: 10px;">
+                <span>${item.name}</span>
+                <span>₹${item.price}</span>
+                <button onclick="removeFromCart(${index})">Remove</button>
+            `;
+            cartItemsContainer.appendChild(cartItemDiv);
+            total += item.price;
+        });
+
+        totalContainer.innerHTML = `Total: ₹${total}`;
+    }
+
+    // Event Listeners for navigation
+    document.querySelector("a[href='productslist.html']").onclick = showProducts;
+    document.querySelector("a[href='cart.html']").onclick = showCart;
+    document.querySelector("a[href='about.html']").onclick = showAbout;
+
+</script>
+</body>
+</html>

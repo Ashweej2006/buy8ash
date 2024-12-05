@@ -10,6 +10,28 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            /* Set the background image */
+            background-image: url('pixelcut-export.jpeg'); /* Path to your uploaded background image */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Keep the background fixed during scroll */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        /* Apply an overlay for a futuristic effect */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Black overlay with some transparency */
+            z-index: -1; /* Ensure overlay is behind text */
+            backdrop-filter: blur(8px); /* Add blur effect for a futuristic feel */
         }
 
         nav {
@@ -32,11 +54,24 @@
         #home {
             text-align: center;
             padding-top: 50px;
+            z-index: 1; /* Keep content above the overlay */
         }
 
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
+
+<!-- Overlay for futuristic blending effect -->
+<div class="overlay"></div>
 
 <!-- Navigation Bar -->
 <nav>

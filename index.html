@@ -3,89 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping Cart - Sunglasses Store</title>
+    <title>BUY8 - Online Shopping</title>
+    <link rel="stylesheet" href="styles.css"> <!-- External CSS file link -->
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
-            /* Set the background image */
-            background-image: url('https://img.freepik.com/free-photo/top-view-desk-concept-with-copy-space_23-2148223088.jpg'); /* Path to your uploaded background image */
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed; /* Keep the background fixed during scroll */
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        }
+       
+   
+        header {
+            background-color: #333;
             color: white;
+            padding: 10px 0;
+            text-align: center;
         }
-
-        /* Apply an overlay for a futuristic effect */
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* Black overlay with some transparency */
-            z-index: -1; /* Ensure overlay is behind text */
-            backdrop-filter: blur(8px); /* Add blur effect for a futuristic feel */
+        header h1 {
+            margin: 0;
         }
-
         nav {
             display: flex;
             justify-content: center;
             background-color: #444;
         }
-
         nav a {
             color: white;
             padding: 14px 20px;
             text-decoration: none;
             text-align: center;
         }
-
         nav a:hover {
             background-color: #575757;
         }
-
-        #home {
+        .banner {
+            background-image: url('https://img.freepik.com/free-photo/top-view-desk-concept-with-copy-space_23-2148223088.jpg'); /* Placeholder image */
+            background-size: cover;
+            background-position: center;
+            height: 400px;
             text-align: center;
-            padding-top: 50px;
-            z-index: 1; /* Keep content above the overlay */
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-
-        h1 {
+        .banner h2 {
             font-size: 3rem;
-            margin: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 5px;
         }
-
-        p {
+        .product-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 20px;
+            gap: 20px;
+        }
+        .product {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            text-align: center;
+            padding: 20px;
+        }
+        .product img {
+            width: 100%;
+            height: 100%;
+            border-radius: 500px;
+        }
+        .product h3 {
+            color: #333;
             font-size: 1.5rem;
+            margin: 10px 0;
+        }
+        .product p {
+            font-size: 1.2rem;
+            color: #888;
+        }
+        .product .price {
+            font-size: 1.4rem;
+            font-weight: bold;
             margin-top: 10px;
+            color: #2d6a4f;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        footer p {
+            margin: 0;
         }
     </style>
 </head>
 <body>
 
-<!-- Overlay for futuristic blending effect -->
-<div class="overlay"></div>
+<header>
+    <h1>Welcome to BUY8</h1>
+    <p>Your one-stop online shop for everything you need!</p>
+</header>
 
-<!-- Navigation Bar -->
 <nav>
     <a href="index.html">Home</a>
     <a href="newcart.html">Products</a>
+
     <a href="about.html">About</a>
+
 </nav>
 
-<!-- Homepage Content -->
-<div id="home">
-    <h1>Welcome to the Sunglasses Store</h1>
-    <p>Your one-stop shop for stylish sunglasses!</p>
-    <p>Click on the "Products" tab to explore our collection.</p>
+<div class="banner">
+    <h2>Discover the Best Deals Today!</h2>
 </div>
+
+
+<footer>
+    <p>&copy; 2024 BUY8. All Rights Reserved.</p>
+</footer>
 
 </body>
 </html>

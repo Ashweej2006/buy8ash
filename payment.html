@@ -54,7 +54,7 @@
     <!-- Payment Section -->
     <div class="container">
         <h3>Total Cost:</h3>
-        <div class="total" id="total-cost-display">$0.00</div>
+        <div class="total" id="total-cost-display">₹0.00</div>
 
         <button class="payment-button" onclick="processPayment()">Proceed with Payment</button>
     </div>
@@ -65,10 +65,10 @@
         const totalCost = parseFloat(urlParams.get('totalCost'));
 
         // Display the total cost
-        document.getElementById('total-cost-display').textContent = `$${totalCost.toFixed(2)}`;
+        document.getElementById('total-cost-display').textContent = `₹${totalCost.toFixed(2)}`;
 
         function processPayment() {
-            alert(`Payment of $${totalCost.toFixed(2)} has been processed successfully.`);
+            alert(`Payment of ₹${totalCost.toFixed(2)} has been processed successfully.`);
             // Redirect to a confirmation page or thank you page after payment
         }
     </script>

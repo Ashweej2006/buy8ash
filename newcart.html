@@ -230,7 +230,7 @@
         function proceedToPayment() {
             if (totalCost > 0) {
                 // Redirect to payment page with the total cost in the URL
-                window.location.href = `payment.html?totalCost=₹${totalCost}`;
+                window.location.href = `payment.html?totalCost=${totalCost}`;
             } else {
                 alert('Your cart is empty. Add items to the cart before proceeding to payment.');
             }
